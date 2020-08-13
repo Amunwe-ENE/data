@@ -1,6 +1,7 @@
 const request = require('request');
 require('dotenv').config();
 const {All} = require('./schema');//
+const fs = require('fs');
 const apiURL = 'https://api.covid19api.com/all';
 
 const getAndSaveAll = () => {
