@@ -23,7 +23,8 @@ const getAndSaveAll = () => {
         Date: data.Date,
         LocationID: data.LocationID
         }).save((err, results)=> {
-
+          if(err) console.error(err)
+          console.log(`Successfully save ${results.Country}`)
         })
       })
       });
