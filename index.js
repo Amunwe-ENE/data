@@ -29,4 +29,8 @@ const getAndSaveAll = () => {
       })
       });
 }
-getAndSaveAll();
+//getAndSaveAll();
+const pipeToFile = ()=> {
+  request(apiURL).pipe(fs.createWriteStream('all.json'))
+}
+pipeToFile();
