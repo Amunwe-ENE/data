@@ -1,0 +1,24 @@
+{
+  "name": "coviddataapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amunwe-ENE/data.git"
+  },
+  "author": "Erastus Amunwe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amunwe-ENE/data/issues"
+  },
+  "homepage": "https://github.com/Amunwe-ENE/data#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.9.28",
+    "request": "^2.88.2"
+  }
+}
