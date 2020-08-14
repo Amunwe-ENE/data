@@ -1,6 +1,6 @@
 const request = require('request');
 require('dotenv').config();
-const {All} = require('./schema');//
+const {All, Daily} = require('./schema');//
 const fs = require('fs');
 const apiURL = 'https://api.covid19api.com/all';
 const tURL = 'https://api.covid19api.com/total/country/'
@@ -50,7 +50,7 @@ const getAndSaveDaily = (code) => {
     //  console.log('body:', body); // Print the HTML for the Google homepage.
       let json = JSON.parse(body)
       json.map(data => {
-      new All({
+      new Daily({
         Country: data.Country,
       CountryCode: data.CountryCode,
       Province: data.Province,
@@ -74,9 +74,9 @@ const getAndSaveDaily = (code) => {
 
 let first = 100;
 countList.map(count => {
-
+  console.log(`Setting request for ${count.country}`)
   setTimeout(()=>{
     getAndSaveDaily(count.code);
   }, first);
-  first+= 60000
+  first+= 30000
 })
