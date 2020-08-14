@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const option = { socketTimeoutMS: 30000, keepAlive: true, reconnectTries: 30000 };
-mongoose.connect(process.env.MONGODB_URL, option).then(
+//const option = { socketTimeoutMS: 30000, keepAlive: true, reconnectTries: 30000 };
+mongoose.connect(process.env.MONGODB_URL).then(
     () => {
       console.log('Ready to Use...Connected successfully');
     },
