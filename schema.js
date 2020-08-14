@@ -22,9 +22,25 @@ const allSchema = new mongoose.Schema({
     unique: true,},
   LocationID: String
 })
+const dailySchema = new mongoose.Schema({
+  Country:String,
+  CountryCode:String,
+  Province:String,
+  City:String,
+  CityCode:String,
+  Lat:Number,
+  Lon:Number,
+  Confirmed:Number,
+  Deaths:Number,
+  Recovered:Number,
+  Active:Number,
+  Date:Date
+})
 
+const Daily = mongoose.model('Daily', dailySchema);
 const All = mongoose.model('All', allSchema);
 
 module.exports = {
     All,
+    Daily
 }
