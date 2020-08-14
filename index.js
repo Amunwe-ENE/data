@@ -78,5 +78,5 @@ countList.map(count => {
   setTimeout(()=>{
     getAndSaveDaily(count.code);
   }, first);
-  first+= 30000
+  first+= 15000
 })
