@@ -89,7 +89,7 @@ const getAndSaveDaily = (code) => {
 let updateCounter = 0
 countList.map(count => {
   //console.log(`Setting request for ${count.country}`)
-  counter+=1
+  updateCounter+=1
   Daily.updateMany({Country:count.country, CountryCode: ""},  
     {CountryCode: count.code}, function (err, docs) { 
     if (err){ 
