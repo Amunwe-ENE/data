@@ -96,7 +96,7 @@ countList.map(count => {
         console.log(err) 
     } 
     else{ 
-        console.log(counter+": Updated Docs : ", docs); 
+        console.log(counter+": Updated Docs : ", docs.nModified); 
     } 
 });
 })
