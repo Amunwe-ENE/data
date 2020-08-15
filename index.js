@@ -72,6 +72,7 @@ const getAndSaveDaily = (code) => {
 
       }).save((err, results)=> {
         if(err) console.error(err)
+        count +=1;
         console.log(`${count}: Successfully save ${results.Country}`)
       })
     })
