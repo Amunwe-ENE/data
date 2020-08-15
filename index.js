@@ -86,15 +86,17 @@ const getAndSaveDaily = (code) => {
 //   }, first);
 //   first+= 15000
 // })
+let counter = 0
 countList.map(count => {
   //console.log(`Setting request for ${count.country}`)
+  counter+=1
   Daily.updateMany({Country:count.country, CountryCode: ""},  
     {CountryCode: count.code}, function (err, docs) { 
     if (err){ 
         console.log(err) 
     } 
     else{ 
-        console.log("Updated Docs : ", docs); 
+        console.log(counter+": Updated Docs : ", docs); 
     } 
 });
 })
