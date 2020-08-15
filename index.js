@@ -86,7 +86,7 @@ const getAndSaveDaily = (code) => {
 //   }, first);
 //   first+= 15000
 // })
-let counter = 0
+let updateCounter = 0
 countList.map(count => {
   //console.log(`Setting request for ${count.country}`)
   counter+=1
@@ -96,7 +96,7 @@ countList.map(count => {
         console.log(err) 
     } 
     else{ 
-        console.log(counter+": Updated Docs : ", docs.nModified); 
+        console.log(updateCounter+": Updated Docs : ", docs.nModified); 
     } 
 });
 })
