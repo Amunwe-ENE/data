@@ -1,7 +1,10 @@
 const request = require('request');
 require('dotenv').config();
+const cron = require('node-cron');
+const express = require('express')
 const {All, Daily} = require('./schema');//
 const fs = require('fs');
+const app = express();
 const apiURL = 'https://api.covid19api.com/all';
 const tURL = 'https://api.covid19api.com/total/country/'
 let counter = 0;
@@ -54,7 +57,11 @@ const getAndSaveDaily = (code) => {
       let json = JSON.parse(body)
       let count = 0
         console.log('Total: '+json.length)
+        
       json.map(data => {
+        let date = new Date(data.Date)
+        if(date.getDate()> 13 && date.getMonth()==7){
+          
       new Daily({
         Country: data.Country,
       CountryCode: data.CountryCode,
@@ -74,29 +81,52 @@ const getAndSaveDaily = (code) => {
         count +=1;
         console.log(`${count}: Successfully save ${results.Country}`)
       })
+    }
     })
     });
 }
 
-// let first = 100;
-// countList.map(count => {
-//   console.log(`Setting request for ${count.country}`)
-//   setTimeout(()=>{
-//     getAndSaveDaily(count.code);
-//   }, first);
-//   first+= 15000
-// })
-let updateCounter = 0
+let first = 100;
 countList.map(count => {
-  //console.log(`Setting request for ${count.country}`)
-  updateCounter+=1
-  Daily.updateMany({Country:count.country, CountryCode: ""},  
-    {CountryCode: count.code}, function (err, docs) { 
-    if (err){ 
-        console.log(err) 
-    } 
-    else{ 
-        console.log(updateCounter+": Updated Docs : ", docs.nModified); 
-    } 
-});
+  console.log(`Setting request for ${count.country}`)
+  setTimeout(()=>{
+    getAndSaveDaily(count.code);
+  }, first);
+  first+= 11000
 })
+// let updateCounter = 0
+// countList.map(count => {
+//   //console.log(`Setting request for ${count.country}`)
+//   updateCounter+=1
+//   Daily.updateMany({Country:count.country, CountryCode: ""},  
+//     {CountryCode: count.code}, function (err, docs) { 
+//     if (err){ 
+//         console.log(err) 
+//     } 
+//     else{ 
+//         console.log(updateCounter+": Updated Docs : ", docs.nModified); 
+//     } 
+// });
+// })
+
+// // To update a database
+// cron.schedule("1 * * * * *", function() {
+//   console.log("---------------------");
+//   console.log("Running Cron Job");
+//   request(tURL+'za', function (error, response, body) {
+//     if(error) return console.error('error:', error); // Print the error if one occurred
+//      console.log('statusCode:', response.statusCode); // Print the response status code if a response was received
+//    //  console.log('body:', body); // Print the HTML for the Google homepage.
+//      let json = JSON.parse(body)
+//      let count = 0
+//        console.log('Total: '+json.length)
+//      json.map(data => {
+//     let date = new Date(data.Date)
+//     if(date.getDate()> 13 && date.getMonth()==7){
+//       console.log(data)
+//     }
+//    })
+//    });
+ 
+// });
+app.listen('8080')
