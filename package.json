@@ -18,7 +18,9 @@
   "homepage": "https://github.com/Amunwe-ENE/data#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "mongoose": "^5.9.28",
+    "node-cron": "^2.0.3",
     "request": "^2.88.2"
   }
 }
