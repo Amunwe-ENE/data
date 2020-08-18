@@ -1,11 +1,11 @@
 const request = require('request');
 require('dotenv').config();
-const cron = require('node-cron');
-const express = require('express')
+// const cron = require('node-cron');
+// const express = require('express')
 const {All, Daily} = require('./schema');//
-const fs = require('fs');
-const app = express();
-const apiURL = 'https://api.covid19api.com/all';
+// const fs = require('fs');
+// const app = express();
+// const apiURL = 'https://api.covid19api.com/all';
 const tURL = 'https://api.covid19api.com/total/country/'
 let counter = 0;
  const countList  = [
@@ -129,4 +129,4 @@ countList.map(count => {
 //    });
  
 // });
-app.listen('8080')
+// app.listen('8080')
